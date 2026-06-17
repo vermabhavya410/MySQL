@@ -4,7 +4,8 @@ export default{
   async up (queryInterface, Sequelize) {
     queryInterface.addColumn("hotels","rating",{
       type:Sequelize.INTEGER,
-      allowNull:false
+      allowNull:false,
+      defaultValue: 0
     })
   },
 

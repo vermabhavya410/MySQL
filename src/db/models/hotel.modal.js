@@ -2,19 +2,7 @@ import { Model } from "sequelize";
 import { sequelize } from "../../config/sequelize.js"
 import { DataTypes } from "sequelize";
 
-class Hotel extends Model {
-  id;
-  name;
-  address;
-  city;
-  state;
-  zip;
-  country;
-  phone;
-  email;
-  createdAt;
-  updatedAt;
-}
+class Hotel extends Model {}
 
 Hotel.init({
     id:{
