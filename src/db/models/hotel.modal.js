@@ -49,11 +49,17 @@ Hotel.init({
     updatedAt:{
         type:DataTypes.DATE,
         allowNull:false
+    },
+    deletedAt:{
+        type:DataTypes.DATE,
+        allowNull:true,
+        defaultValue:null
     }
 },{
   sequelize,
   tableName:"hotels",
-  timestamps:true
+  timestamps:true,
+  paranoid:true
 })
 
 export default Hotel;

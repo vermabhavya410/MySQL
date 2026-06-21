@@ -24,3 +24,21 @@ export async function updateHotel(id,updateData) {
   });
   return hotel
 }
+
+export async function SoftdeleteHotel(id) {
+  const hotel=await Hotel.findByPk(id)
+  await hotel.destroy()
+  return hotel
+}
+
+export async function hardDelete(id) {
+  const hotel=await Hotel.findByPk(id,{paranoid:false})
+  await hotel.destroy()
+  return{message:"Hotel permanently Deleted!"}
+}
+
+export async function restoreHotel(id) {
+  const hotel=await Hotel.findByPk(id,{paranoid:false})
+  const restoredHotel=await hotel.restore()
+  return restoredHotel
+}
