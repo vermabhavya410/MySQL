@@ -103,3 +103,23 @@ export async function restoreHotelController(req, res) {
     });
   }
 }
+
+export const uploadHotelImageController = async (req, res) => {
+  const { id } = req.params
+
+  if (!req.file) {
+    return res.status(400).json({ message: "No file uploaded" })
+  }
+
+  const result = await uploadHotelImageService(id, req.file.path)
+
+  if (result.error === "Image upload to Cloudinary failed") {
+    return res.status(500).json({ message: result.error })
+  }
+
+  if (result.error === "Hotel not found") {
+    return res.status(404).json({ message: result.error })
+  }
+
+  return res.status(200).json({ message: "Image uploaded successfully", hotel: result })
+}

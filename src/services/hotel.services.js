@@ -53,3 +53,14 @@ export async function restoreHotelService(id) {
   const restoredData = await restoreHotel(id);
   return restoredData;
 }
+
+
+export const uploadHotelImageService = async (id, localPath) => {
+  const cloudinaryResponse = await uploadToCloudinary(localPath)
+  if (!cloudinaryResponse) return { error: "Image upload to Cloudinary failed" }
+
+  const hotel = await updateHotelImage(id, cloudinaryResponse.url)
+  if (!hotel) return { error: "Hotel not found" }
+
+  return hotel
+}

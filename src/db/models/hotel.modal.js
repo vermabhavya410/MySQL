@@ -42,6 +42,10 @@ Hotel.init({
         type:DataTypes.STRING,
         allowNull:false
     },
+    imageUrl: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     createdAt:{
         type:DataTypes.DATE,
         allowNull:false
